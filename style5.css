@@ -1,0 +1,387 @@
+@charset "UTF-8";
+
+/* 共通部分
+------------------------------- */
+html {
+    font-size: 100%;
+}
+body{
+    font-family: "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", sans-serif;
+    line-height: 1.7;
+    color: rgb(0, 0, 0);
+    background-color: rgb(226, 226, 226);
+    /* background-color: white; */
+}
+a {
+    text-decoration: none;
+}
+img {
+    max-width: 100%;
+}
+
+.wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+
+
+/* フッター
+------------------------------- */
+footer {
+  background: rgb(0, 0, 0);
+  text-align: center;
+  padding: 26px 0;
+}
+footer p {
+  color: #fff;
+  font-size: 0.875rem;
+}
+
+
+/* 
+hamburger(ハンバーガーアイコン)
+=================================== */
+.hamburger {
+    position: absolute;
+    right: 5%;
+    top: 15%;
+    width: 50px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 300;
+  }
+  
+  .hamburger__line {
+    position: absolute;
+    width: 50px;
+    height: 3px;
+    right: 0;
+    background-color: #fff;
+    transition: all 0.5s;
+  }
+  
+  .hamburger__line--1 {
+    top: 1px;
+  }
+  
+  .hamburger__line--2 {
+    top: 18px;
+  }
+  
+  .hamburger__line--3 {
+    top: 36px;
+  }
+  
+  /*ハンバーガーがクリックされたら*/
+  .open .hamburger__line--1 {
+    transform: rotate(-45deg);
+    top: 11px;
+  }
+  
+  .open .hamburger__line--2 {
+    opacity: 0;
+  }
+  
+  .open .hamburger__line--3 {
+    transform: rotate(45deg);
+    top: 11px;
+  }
+  
+  /* 
+  sp-nav(ナビ)
+  =================================== */
+  .sp-nav {
+    position: fixed;
+    right: 0%; /*ハンバーガーがクリックされる前はWindow右側に隠す*/
+    top: 0;
+    width: 70%; /* 出てくるスライドメニューの幅 */
+    height: 100vh;
+    background-color: #000;
+    transition: all 0.5s;
+    z-index: 200;
+    opacity: 0;
+    visibility: hidden;
+    overflow-y: auto; /* メニューが多くなったらスクロールできるように */
+  }
+
+.sp-nav ul {
+  list-style: none;
+}
+.sp-nav ul li {
+    color: #fff;
+    text-align: center;
+    margin-top: 10%;
+  }
+  
+  /*ハンバーガーがクリックされたら右からスライド*/
+  .open .sp-nav {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  
+  /* 
+  black-bg(ハンバーガーメニュー解除用bg)
+  =================================== */
+  .black-bg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 5;
+    background-color: #000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+    cursor: pointer;
+    z-index: 100;
+  }
+  
+  /*ハンバーガーメニューが開いたら表示*/
+  .open .black-bg {
+    opacity: 0.3;
+    visibility: visible;
+  }
+  
+  
+
+  /* study
+------------------------------- */
+#study {
+  /* background-image: url(fig/top.jpg); */
+  background-color: black;
+  height: 10vh;
+  margin-bottom: 40px;
+  margin-top: 0%;
+  top: 0;
+  position: fixed;
+  width: 99%;
+  z-index: 1000;
+}
+.menu {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+}
+
+#band {
+  background-image: url(fig/top_thin.jpg);
+  height: 19vh;
+  width: 100%;
+}
+
+
+.grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 6px;
+  margin-bottom: 50px;
+  padding-top:  25px;
+  /* width: 60rem; */
+  width: 90%;
+}
+
+.grade {
+  margin-left: 100px;
+  margin-bottom: 0px;
+  font-size: 2em;
+  border-bottom: #0bd solid;
+  width: 250px;
+  text-align: center;
+}
+#theme {
+  text-align: center;
+  font-size: 30px;
+}
+
+
+.item {
+  background-color: rgba(216, 245, 243, 0.815);
+  padding: 10px 10px 10px 10px;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 50%);
+  margin-bottom: 5%;
+  opacity: 0;
+  transform: translateY(50px);
+  visibility: hidden;
+  transition: all 1s;
+}
+
+.item.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0px);
+}
+
+.item:hover {
+  transform: scale(1.05, 1.05);
+}
+
+.item p {
+  font-size: 1.1rem;
+}
+
+.item h4 {
+  text-align: center;
+  font-size: 25px;
+  margin: 0 0 0 0 ;
+  /* border-bottom: black solid; */
+  border-spacing: 0px;
+}
+
+.item h5 {
+  font-size: 20px;
+  margin: 0 0 0 0 ;
+}
+
+.item p {
+  margin-bottom: 10px;
+  margin-top: 0px;
+}
+
+.choice-button {
+  margin-top: 20%;
+}
+
+.choice-button h4 {
+  text-align: left;
+  margin-left: 15%;
+  text-align: center;
+  width: 35%;
+  font-size: 1.5rem;
+  background-color: rgba(178, 179, 178, 0);
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(2, 2, 2, 0.8);
+}
+.choice-button h4:hover {
+  color: #0bd;
+  transform: scale(1.1, 1.1);
+}
+
+.choice-button ul {
+  display: none;
+  padding: 1% 10%;
+}
+.choice-button ul li {
+  display: block;
+  font-weight: bold;
+  width: auto;
+}
+
+.choice-button ul a {
+  font-size: 1.2rem;
+  color: #000;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+.choice-button ul a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2.0px;
+  background-color: #0bd;
+  transform: translate(-100%, 0);
+  transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s;
+  content: "";
+}
+.choice-button ul a:hover:after {
+  transform: translate(0, 0);
+}
+.choice-button ul a:hover {
+  color: #0bd;
+}
+
+.scroll-button {
+  position: fixed;
+  z-index: 1000;
+  display: block;
+  text-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: center;
+  right: 0%;
+  bottom: 2%;
+  width: 100px;
+  height: 100px;
+  margin-top: 2%;
+  margin-right: 2%;
+  padding: 0.8%;
+  color: #000;
+  transition: .3s;
+  opacity: 0;
+  visibility: hidden;
+  font-size: 40px;
+  border-radius: 100%;
+  border: solid 6px #000;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 100%);
+}
+
+.scroll-button p {
+  margin-top: 5%;
+  color: #000;
+}
+
+
+.scroll-button:after {
+  content: "";
+  display: block;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.342);
+  right: 0%;
+  bottom: 2%;
+  width: 100px;
+  height: 100px;
+  margin-top: 2%;
+  margin-right: 2%;
+  padding: auto;
+  transform: translate(0%, 0%) scale(0, 0);
+  transition: transform ease 0.4s;
+  border-radius: 100%;
+}
+.scroll-button:hover:after {
+  position: fixed;
+  right: 0%;
+  bottom: 2%;
+  width: 100px;
+  height: 100px;
+  margin-top: 2%;
+  margin-right: 2%;
+  padding: auto;
+  transform: translate(0%, 0%) scale(1.1, 1.1);
+  border-radius: 100%;
+}
+.scroll-button:before {
+  content: "";
+  position: fixed;
+  right: 0%;
+  bottom: 2%;
+  width: 100px;
+  height: 100px;
+  margin-top: 2%;
+  margin-right: 2%;
+  padding: auto;
+  border-radius: 100%;
+}
+.scroll-button:hover:before {
+  position: fixed;
+  right: 0%;
+  bottom: 2%;
+  width: 100px;
+  height: 100px;
+  margin-top: 2%;
+  margin-right: 2%;
+  padding: auto;
+}
+
+
+.active {
+  opacity: 1;
+  visibility: visible;
+}
