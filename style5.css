@@ -9,7 +9,7 @@ body{
     font-family: "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", sans-serif;
     line-height: 1.7;
     color: rgb(0, 0, 0);
-    background-color: rgb(226, 226, 226);
+    background-color: rgb(255, 255, 255);
     /* background-color: white; */
 }
 a {
@@ -32,6 +32,11 @@ footer {
   background: rgb(0, 0, 0);
   text-align: center;
   padding: 26px 0;
+  position: absolute;
+  border-top: 1px solid #000;
+  width: 100%;
+  left: 0;
+  
 }
 footer p {
   color: #fff;
@@ -52,10 +57,6 @@ hamburger(ハンバーガーアイコン)
     z-index: 300;
     transition: all .5s;
   }
-
-.hamburger:hover {
-  transform: rotate(180deg);
-}
   
   .hamb-line {
     position: absolute;
@@ -107,20 +108,33 @@ hamburger(ハンバーガーアイコン)
     transition: all 0.5s;
     z-index: 200;
     opacity: 0;
+    padding: 1% 10% 10% 1%;
     visibility: hidden;
     overflow-y: auto; /* メニューが多くなったらスクロールできるように */
   }
 
 .sp-nav ul {
   list-style: none;
+  
 }
+
 .sp-nav ul li {
     color: #fff;
     text-align: center;
-    margin-top: 10%;
+    margin-top: 5%;
+    width: 100%;
+    padding: 1% 1% 1% 0%;
+    box-shadow: 0 5px 100px rgb(11, 197, 221);
+    margin-bottom: 1%;
+    /* border-radius: 100px; */
   }
+.sp-nav ul li:hover {
+  transform: scale(1.0, 1.0);
+  transition: transform 0.5s;
+}
+
 .sp-nav ul a {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
 }
 
 .sp-nav a {
@@ -187,6 +201,187 @@ hamburger(ハンバーガーアイコン)
   color: #fff;
   font-size: 1.5rem;
 }
+
+.delayItem {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 2.0s;
+}
+.delayItem.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/*-------opening------  */
+
+.opening-curtain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  color: #000;
+  z-index: 0;
+  left: 0;
+}
+.opening-curtain.show:before {
+  transform: translate(0, 0);
+}
+.opening-curtain:before {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  transform: translate(0, -100%);
+  transition: transform cubic-bezier(0.215, 0.61, 0.335, 1) .6s;
+  content: '';
+}
+
+.opening {
+  display: block;
+  color: #fff;
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+}
+.opening span {
+  display: block;
+  opacity: 0;
+  transition: transform cubic-bezier(0.215, 0.61, 0.335, 1), opacity linear 0.7s;
+}
+
+.opening span:first-child {
+  transform: translate(0, 0px);
+  font-size: 20px;
+  transition-delay: 0.35s;
+}
+
+.opening span:last-child {
+  margin-top: 18px;
+  transform: translate(0, 0);
+  font-size: 48px;
+  transition-delay: 0.6s;
+}
+.opening-curtain.show .opening span {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/*------home---------*/
+
+
+#home {
+  background-image: url(fig/strato.jpg);
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  padding: 0% 0% 0% 0%;
+  /* min-height: 20vh; */
+  /* height: auto; */
+  position: inherit;
+  margin-bottom: 50%;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  /* z-index: -1000; */
+}
+/* .strato {
+  background-image: url(fig/strato.jpg);
+  width: 100%;
+  height: 100vh;
+  position: inherit;
+  left: 0;
+
+  background-repeat: no-repeat;
+} */
+
+#home h2 {
+  margin-top: 400px;
+  text-align: center;
+  font-size: 3.0rem;
+  font-family: 'Josefin Sans', sans-serif;
+
+}
+
+.grid-home {
+  display: grid;
+  gap: 100px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 10px;
+  width: 90%;
+  margin-bottom: 7%;
+  padding-top:  205px;
+}
+
+.home-explain {
+  text-align: center;
+  font-family: serif;
+  font-weight: bold;
+  margin-top: 100vh;
+  margin-bottom: 10%;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100px);
+  transition: all 0.8s;
+  padding: 1% 5% 1% 5%;
+}
+.home-explain.show {
+  transform: translateY(0px);
+  opacity: 1;
+  visibility: visible;
+}
+
+.home-item {
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  transform: translateX(-100px) translateY(100px) rotate(-30deg) scale(0.9, 0.9) ;
+  transition: all 1.0s;
+}
+
+.home-item.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0px) scale(1.0, 1.0);
+}
+
+.grid-home h4 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 0;
+  border-bottom: #0bd solid;
+
+}
+
+.grid-news{
+  height: 30rem;
+  overflow-y: scroll;
+}
+
+.grid-mon{
+  font-weight: bolder;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.grid-context{
+  margin-top: 0;
+  margin-bottom: 0;
+  border-bottom: solid gray;
+  border-width: 1px;
+}
+
+
   
   
 
@@ -198,10 +393,12 @@ hamburger(ハンバーガーアイコン)
 #study {
   /* background-image: url(fig/top.jpg); */
   background-color: black;
-  height: 13vh;
+  height: 110px;
   margin-bottom: 100px;
   margin-top: 0%;
   top: 0;
+  left: 0;
+  letter-spacing: 0;
   position: fixed;
   width: 100%;
   z-index: 1000;
@@ -210,11 +407,10 @@ hamburger(ハンバーガーアイコン)
   background-image: url(fig/top_thin.jpg);
   top: 10px;
   height: 13%;
-  width: 100%; 
-  /* z-index: -100; */
+  width: 100%;
 }
 
-#mem-content {
+.mem-content {
   display: flex;
   justify-content: space-between;
   margin-top: 10%;
@@ -224,14 +420,49 @@ hamburger(ハンバーガーアイコン)
   text-align: left;
 }
 
-#mem-left {
+.content-left {
   width: 16.5%;
   margin-top: 0%;
   height: 100%;
   position: fixed;
+  z-index: 0;
   top: 0;
+  left: 0;
   text-align: left;
   background-color: rgb(134, 132, 132);
+}
+
+.back-ground {
+  background-image: url(fig/top.jpg);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  z-index: -100;
+  opacity: 0.4;
+}
+
+.back-ground-home {
+  background-image: url(fig/top.jpg);
+  height: 100%;
+  width: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: fixed;
+  z-index: -100;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-100%);
+  transition: all 1.0s;
+
+}
+
+.back-ground-home.show {
+  transform: translateX(0%);
+  opacity: 0.4;
+  visibility: visible;
+
 }
 
 
@@ -239,7 +470,7 @@ hamburger(ハンバーガーアイコン)
   margin-top: 100%;
 }
 
-#mem-right {
+.content-right {
   width: 80%;
   padding: 1% 1% 1% 15%;
   margin-top: 0%;
@@ -261,7 +492,8 @@ hamburger(ハンバーガーアイコン)
   color: #fff;
   display: flex;
   justify-content: space-between;
-  padding: 1% 0% 1%;
+  padding: 1% 13% 1% 1%;
+  /* width: auto; */
 }
 
 
@@ -329,7 +561,6 @@ hamburger(ハンバーガーアイコン)
   margin-top: 5%;
   color: #000;
 }
-
 
 .scroll-button:after {
   content: "";
@@ -416,12 +647,14 @@ hamburger(ハンバーガーアイコン)
 
 .item {
   background-color: rgba(216, 245, 243, 0.815);
+  color: #000;
   padding: 10px 10px 10px 10px;
   border-radius: 15px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 50%);
+
   margin-bottom: 5%;
   opacity: 0;
-  transform: translateY(50px);
+  transform: translateY(60px) rotate(10deg);
   visibility: hidden;
   transition: all 1s;
 }
@@ -457,30 +690,25 @@ hamburger(ハンバーガーアイコン)
 
 /* -------------記事部分------------ */
 
-article {
-  width: 100%;
-  margin-left: 30%;
-  margin-top: 20%;
+/* ----- study---- */
+
+#study-article {
+  text-align: center;
+  margin-top: 15%;
+  margin-left: 10%;
+  width: 90%;
+  opacity: 1;
+  visibility: visible;
+  /* transform: translateY(60px) rotate(10deg); */
+
 }
 
-/* サイドバー */
-aside {
-  width: 10%;
-  position: fixed;
-  margin-top: 0%;
-  left: 1;
-  background-color: rgb(109, 105, 103);
-  height: 100%;
-}
-.this-is-contents {
-  margin-left: 0%;
+.sub-menu-movile {
+  opacity: 0;
+  visibility: hidden;
+  height: 0vh;
 }
 
-.study-contents {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 50px;
-}
 
 .post-info {
   position: relative;
@@ -496,7 +724,7 @@ aside {
   text-align: center;
 }
 
-article img {
+#study-article img {
   margin-bottom: 20px;
   height: auto;
   width: 100%;
@@ -520,8 +748,18 @@ article p {
   color: #0bd;
 }
 
+.sub-title {
+  width: 90%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
 .sub-menu a {
-  font-size: 0.9rem;
+  text-align: center;
+  font-size: 1.0rem;
+  color: #000;
+  font-weight: bold;
   display: inline-block;
   position: relative;
   overflow: hidden;
@@ -561,7 +799,7 @@ aside p {
 .sub-menu li {
   /* border-bottom: 1px solid cornflowerblue; */
   text-align: left;
-  margin-right: 10px;
+  /* margin-right: 10px; */
 }
 .sub-menu a {
   color: #432;
@@ -572,16 +810,98 @@ aside p {
   color: #0bd;
 }
 
+
+/* link
+------------------------------- */
+.link{
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 15%;
+  text-align: center;
+  padding: 1% 2% 10% 2%
+}
+.link h3 {
+  text-align: center;
+  width: 100%;
+}
+
+.link-title {
+  margin-bottom: 0px;
+  font-size: 2.0rem;
+  border-bottom: #0bd solid;
+  width: 80%;
+  text-align: center;
+  margin-right: 5%;
+}
+
+.link p {
+  font-size: 1.2em;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.link h4 {
+  margin-right: 5%;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.link a {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #000;
+  font-weight: bolder;
+}
+
+.link a {
+  font-size: 1.2em;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+.link a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #0bd;
+  transform: translate(-100%, 0);
+  transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s;
+  content: "";
+}
+.link a:hover:after {
+  transform: translate(0, 0);
+}
+
+.link a:hover {
+  color: #0bd;
+}
+
+
+
 @media (max-width: 850px) {   /* 画面がちょっとばかしちっさいとき*/
+  .menu {
+    margin-right: 5%;
+  }
+  #home {
+    height: 100vh;
+    width: 100%;
+  }
+  #home h2 {
+    margin-top: 40%;
+  }
   .grid-home {
     display: grid;
-    gap: 26px;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
   }
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 
   }
-  #mem-left {
+  .content-left {
     width: 22%;
     margin-top: 10%;
   }
@@ -591,24 +911,44 @@ aside p {
   .mem-menu li a {
     font-size: 16px;
   }
-  #mem-right {
+  .content-right {
     width: 60%;
     padding: 1% 1% 1% 30%;
-    margin-top: 10%;
+    margin-top: 14%;
   }
   .grade {
     text-align: center;
     margin-left: 1%;
   }
+  .post-title {
+    font-size: 1.8rem;
+  }
+  #study-article {
+    width: 100%;
   }
 
-@media (max-width: 480px){  /*--   movile version   --*/
+  .link {
+    margin-top: 20%;
+  }
+
+  .link h4 {
+    font-size: 1.2rem;
+  }
+  
+  }
+
+@media (max-width: 450px){  /*--   movile version   --*/
+
+  .menu {
+    padding: 1% 1% 1% 1%;
+    left: 0;
+  }
 
   .menu h4 {
     font-size: 12px;
   }
   .menu h1 {
-    font-size: 30px;
+    font-size: 1.3rem;
     padding: 1% 20% 1% 1%;
   }
   .hamburger {
@@ -616,21 +956,72 @@ aside p {
   }
   
   .sp-nav {
-    width: 100%;
+    width: 90%;
     text-align: center;
-    padding: 20% 5%;
+    margin-bottom: 10%;
+    padding: 20% 10% 10% 10%;
+
   }
+  .sp-nav li {
+    box-shadow: 0 3px 10px rgb(11, 197, 221);
+    padding: 1% 1% 1% 1%;
+  }
+
   .sp-nav li a {
     border-radius: 10px;
-    background-color: rgba(180, 176, 176, 0.5);
-    padding: 2%;
+    font-size: 1.3rem;
+    /* background-color: rgba(180, 176, 176, 0.5); */
+    /* padding: 1%; */
   }
-  #mem-left {
+  .sp-nav ul li:hover {
+    transform: scale(1.0, 1.0) rotate(0deg);
+    transition: transform 1.0s;
+  }
+
+  #home h2 {
+    font-size: 1.2rem;
+    margin-top: 80%;
+  }
+  #home-menu h4 {
+    font-size: 0.5rem;
+  }
+  #home-menu h1{
+    font-size: 1.2rem;
+  }
+  #home {
+    width: 100%;
+    height: 100vh;
+  }
+  .home-explain {
+    margin-top: 85%;
+  }
+  .home-explain h2 {
+    font-size: 1.0rem;
+  }
+  .home-explain p {
+    font-size: 0.8rem;
+    margin-top: 20%;
+  }
+  .home-item {
+    width: 100%;
+    /* padding: 1% 1% 1% 15%; */
+    overflow: hidden;
+    margin: 0%;
+    margin-bottom: 5%;
+  }
+  .home-item h4 {
+    font-size: 1.3rem;
+  }
+  
+  #study {
+    height: 80px;
+  }
+  .content-left {
     opacity: 0;
     display: none;
     visibility: hidden;
   }
-  #mem-right {
+  .content-right {
     width: 100%;
     text-align: left;
     left: 0;
@@ -653,4 +1044,50 @@ aside p {
   .item p {
     font-size: 15px;
   }
+
+  #study-article {
+    width: 80%;
+  }
+
+  .sub-menu-movile {
+    opacity: 1;
+    visibility: visible;
+    height: 10%;
+    list-style: none;
+    display: grid;
+    width: 100%;
+    padding: 1% 1% 1% 1%;
+    gap: 15px;
+  }
+  .sub-menu-movile li {
+    padding: 1% 1% 1% 1%;
+    background-color: rgba(97, 79, 79, 0.363);
+    box-shadow: 0 3px 10px rgb(11, 197, 221);
+    border-radius: 10px;
+  }
+
+  .sub-menu-movile li a{
+    color: #000;
+  }
+
+  .link {
+    margin-top: 25%;
+  }
+  .link-title {
+    font-size: 1.5rem;
+  }
+  .link h4 {
+    font-size: 1.0rem;
+    background-color: rgba(97, 79, 79, 0.363);
+    box-shadow: 0 3px 10px rgb(11, 197, 221);
+    border-radius: 10px;
+
+  }
+  .link p {
+    font-size: 0.9rem;
+  }
+
+  
 }
+
+

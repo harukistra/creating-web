@@ -15,7 +15,7 @@ window.onload = function () {
     var backhome = document.querySelectorAll('.back-ground-home');
     var AnimationExplain = function() {
         for(var i = 0; i < scroll3.length; i++) {
-            var triggerMargin = 300;
+            var triggerMargin = 150;
             if(window.innerHeight > scroll3[i].getBoundingClientRect().top + triggerMargin) {
                 scroll3[i].classList.add('show');
                 backhome[i].classList.add('show');
@@ -45,13 +45,31 @@ window.onload = function () {
     var nav = document.getElementById('nav-wrapper');
     var hamburger = document.getElementById('js-hamburger');
     var blackBg = document.getElementById('js-black-bg');
+    var delayitem = document.querySelectorAll('.delayItem');
+    var timeout2 = 200
 
     hamburger.addEventListener('click', function () {
         nav.classList.toggle('open');
+
+        setTimeout(() => {
+            delayitem[0].classList.toggle('show')
+        }, timeout2)
+        setTimeout(() => {
+            delayitem[1].classList.toggle('show')
+        }, timeout2*2)
+        setTimeout(() => {
+            delayitem[2].classList.toggle('show')
+        }, timeout2*3)
+        setTimeout(() => {
+            delayitem[3].classList.toggle('show')
+        }, timeout2*4)
+        
     });
     blackBg.addEventListener('click', function () {
         nav.classList.remove('open');
     });
+
+
 
     document.getElementById('sub-body').animate( {
         background: ["black", "rgb(255, 255, 255)"]
@@ -77,11 +95,9 @@ window.onload = function () {
     }
     window.addEventListener('scroll', Animation);
 
+    
+
 };
-
-
-
-
 
 
 $(document).ready(function(){
